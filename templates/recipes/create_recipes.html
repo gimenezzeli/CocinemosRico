@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Carga Recetas
+{% endblock %}
+
+{% block content %}
+    <body style="background-image: url(../../media/img/fondo-marmol.jpg) ;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;">
+    <h1>Creemos recetass...</h1>
+
+    {% if request.method == 'GET' %}
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <table>       
+            {{form.as_table}}
+        </table>
+
+        <input type="submit" value="Crear receta">
+    </form>
+    {% endif%}
+
+    {% if form_errors %}
+        <h2 style="color: red;">Error: </h2>
+        {{form_errors}}
+    {% endif %}
+
+    {% if message %}
+    <h2 style="color: green;">{{message}}</h2>
+    {% endif %}
+{% endblock %}

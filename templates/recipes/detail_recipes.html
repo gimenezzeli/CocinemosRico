@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Receta detallada
+{% endblock %}
+
+{% block content %}
+
+    <div class="card text-center">
+        <div class="card-header">{{object.name}}</div>
+        <div class="card-body">    
+            {% if object.image %}
+                <img src="{{object.image.url}}" alt=""/>
+            {% endif %}
+        <h5 class="card-title">{{object.description}}</h5>
+        <p class="card-text">Ingredientes: {{object.ingredients}}</p>
+        </div>
+    </div>
+
+
+
+    <h3></h3>
+{% endblock %}

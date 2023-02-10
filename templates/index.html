@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block content %}
+    <header>
+        <section class="textos-header">
+            <h1>Aprende a cocinar</h1>
+            <h2>con nosotros</h2>
+            {% if message %}
+            <h2>{{message}} </h2>
+            {% endif %}
+        </section>
+    </header>
+{% endblock %}

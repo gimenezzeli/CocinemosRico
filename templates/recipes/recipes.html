@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Recetas
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_portfolio.css' %}"/>
+    <h1>Recetas para todos los gustos...</h1>
+    {% if request.user.is_superuser %}
+    <div class="card bg-light mb-3">
+        <div class="card-body">
+            <h2 class="card-title">Crear nueva receta</h2>
+            <a href="/recipes/create-recipes/" class="btn btn-primary">Crear</a>
+        </div>
+    </div>
+    {% endif %}
+    <section class="portafolio">
+        <h2 class="contenedor"><u>Portafolio</u></h2>
+        <div class="galeria-port">
+            {% for recipe in recipes %}
+                <div class="imagen-port">
+                    {% if recipe.image %}
+                        <img src="{{recipe.image.url}}" alt=""/>
+                    {% endif %}
+                    <div class="hover-galeria">
+                        <a href="/recipes/detail-recipes/{{recipe.id}}">
+                            <img src="../../media/img/cursor.png" alt=""/>
+                            <h5 style="color: cornsilk;">{{recipe.name}}</h5>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
